@@ -5,16 +5,24 @@ public class HybridCar extends CarSkeleton {
     private int batterySize;
     private int cylinders;
 
-    public HybridCar(String name, String description, double avgKmPerLitre, int batterySize) {
+    // ✅ Testin beklediği 5 parametreli ctor
+    public HybridCar(String name, String description,
+                     double avgKmPerLitre, int batterySize, int cylinders) {
         super(name, description);
         this.avgKmPerLitre = avgKmPerLitre;
         this.batterySize = batterySize;
-        this.cylinders = 4; // tipik varsayılan; istersen ctor'a parametre ekleyebilirsin
+        this.cylinders = cylinders;
+    }
+
+    // (İstersen önceki 4 parametreli sürümü de overload olarak tutabilirsin)
+    public HybridCar(String name, String description,
+                     double avgKmPerLitre, int batterySize) {
+        this(name, description, avgKmPerLitre, batterySize, 4);
     }
 
     public double getAvgKmPerLitre() { return avgKmPerLitre; }
-    public int getBatterySize() { return batterySize; }
-    public int getCylinders() { return cylinders; }
+    public int getBatterySize()      { return batterySize; }
+    public int getCylinders()        { return cylinders; }
 
     @Override
     public void startEngine() {

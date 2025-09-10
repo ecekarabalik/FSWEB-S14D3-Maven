@@ -10,23 +10,16 @@ public class Car {
     public Car(int cylinders, String name) {
         this.cylinders = cylinders;
         this.name = name;
-        this.engine = true;     // tüm arabalarda motor var
-        this.wheels = 4;        // tüm arabalarda 4 teker
+        this.engine = true; // default
+        this.wheels = 4;    // default
     }
 
-    public int getCylinders() { return cylinders; }
-    public String getName() { return name; }
-
-    public String startEngine() {
-        return getClass().getSimpleName() + ": the car's engine is starting";
+    public int getCylinders() {
+        return cylinders;
     }
 
-    public String accelerate() {
-        return getClass().getSimpleName() + ": the car is accelerating";
-    }
-
-    public String brake() {
-        return getClass().getSimpleName() + ": the car is braking";
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -39,12 +32,26 @@ public class Car {
         if (this == o) return true;
         if (!(o instanceof Car)) return false;
         Car car = (Car) o;
-        return cylinders == car.cylinders &&
-                Objects.equals(name, car.name);
+        return cylinders == car.cylinders && Objects.equals(name, car.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, cylinders);
+        return Objects.hash(cylinders, name);
+    }
+
+    public String startEngine() {
+        System.out.println(getClass().getSimpleName());
+        return getClass().getSimpleName() + ": the car's engine is starting";
+    }
+
+    public String accelerate() {
+        System.out.println(getClass().getSimpleName());
+        return getClass().getSimpleName() + ": the car is accelerating";
+    }
+
+    public String brake() {
+        System.out.println(getClass().getSimpleName());
+        return getClass().getSimpleName() + ": the car is braking";
     }
 }
